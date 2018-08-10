@@ -1,7 +1,7 @@
 import * as second from '~/session_two'
 import { Map } from '~/session_two'
 
-const a = 'a', b = 'b', c = 'c'
+const a = 'a', b = 'b', c = 'c', d = 'd'
 type TestMap = Map<string>
 
 type TestCase<FP, SP, RET> = {
@@ -9,7 +9,17 @@ type TestCase<FP, SP, RET> = {
   expected: RET
 }
 
-function pretty(p: object | string): string {
+function pretty(p: object | number | string | Array<{}> | undefined): string {
+  if(Array.isArray(p)) {
+    const children = p.map(value => pretty(value)).join(', ')
+    return `[${children}]`
+  }
+  if(p === undefined) {
+    return 'undefined'
+  }
+  if(typeof p === 'number') {
+    return p.toString()
+  }
   if(typeof p === 'string') {
     return p
   } else {
@@ -17,7 +27,7 @@ function pretty(p: object | string): string {
   }
 }
 
-function prettyParams(input: (object | string)[], expected: object | string) {
+function prettyParams(input: (object | string | number | Array<{}>)[], expected: object | string | Array<unknown> | undefined) {
   const prettyInput = input
   .map(pretty)
   .join(', ')
@@ -203,6 +213,64 @@ describe('Session two', () => {
         d: []
       }
       expect(commonProperties(left, right)).toEqual({b: 0, c: right.c})
+    })
+  })
+
+  describe('chunk(input, n)', () => {
+    const { chunk } = second
+    type ChunkCase = TestCase<Array<string>, number, Array<Array<string>>>
+    const testCases: ChunkCase[] = [
+      {
+        input: [[a], 2],
+        expected: [[a]]
+      },
+      {
+        input: [[a, b, c], 1],
+        expected: [[a], [b], [c]]
+      },
+      {
+        input: [[a, b, c, d], 2],
+        expected: [[a, b], [c, d]]
+      },
+      {
+        input: [[a, b, c, d], 3],
+        expected: [[a, b, c], [d]]
+      },
+      {
+        input: [[a, b, c, d], 4],
+        expected: [[a, b, c, d]]
+      }
+    ]
+    testCases.forEach(({ input, expected }: ChunkCase) => {
+      const pretty = prettyParams(input, expected)
+      it(`should return ${pretty.output} for the input ${pretty.input} `, () => {
+        expect(chunk.apply(null, input)).toEqual(expected)
+      })
+    })
+  })
+
+  describe('zip(input, n)', () => {
+    const { zip } = second
+    type ZipCase = TestCase<Array<string>, Array<number>, Array<[string, number]>>
+    const testCases: ZipCase[] = [
+      {
+        input: [[a], [0]],
+        expected: [[a, 0]]
+      },
+      {
+        input: [[a, b, c], [1, 2, 3]],
+        expected: [[a, 1], [b, 2], [c, 3]]
+      },
+      {
+        input: [[a, b, c], [1]],
+        expected: [[a, 1]]
+      }
+    ]
+    testCases.forEach(({ input, expected }: ZipCase) => {
+      const pretty = prettyParams(input, expected)
+      it(`should return ${pretty.output} for the input ${pretty.input} `, () => {
+        expect(zip.apply(null, input)).toEqual(expected)
+      })
     })
   })
 })
