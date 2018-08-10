@@ -81,10 +81,6 @@ export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
 
 export function intermingle<A, B>(a: Array<A>, b: Array<B>): Array<A | B> {
   const arr: Array<A | B> = [];
-  for (let i = 0; i < Math.min(a.length, b.length); i++) {
-    arr.push(a[i]);
-    arr.push(b[i]);
-  }
   return arr;
 }
 
