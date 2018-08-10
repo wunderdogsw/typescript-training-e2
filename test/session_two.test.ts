@@ -273,4 +273,29 @@ describe('Session two', () => {
       })
     })
   })
+
+  describe('mergeByRepeating(a, b)', () => {
+    const { mergeByRepeating } = second
+    type RepeatCase = TestCase<Array<string>, Array<number>, Array<string | number>>
+    const testCases: RepeatCase[] = [
+      {
+        input: [[a], [0]],
+        expected: [a, 0]
+      },
+      {
+        input: [[a, b, c], [1, 2, 3]],
+        expected: [a, 1, b, 2, c, 3]
+      },
+      {
+        input: [[a, b, c], [1]],
+        expected: [a, 1]
+      }
+    ]
+    testCases.forEach(({ input, expected }: RepeatCase) => {
+      const pretty = prettyParams(input, expected)
+      it(`should return ${pretty.output} for the input ${pretty.input} `, () => {
+        expect(mergeByRepeating.apply(null, input)).toEqual(expected)
+      })
+    })
+  })
 })

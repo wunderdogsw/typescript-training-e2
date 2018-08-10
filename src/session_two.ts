@@ -69,7 +69,7 @@ export function commonProperties<A extends Indexed, B extends Indexed>(
  * [1,2,3,4], 2 => [[1, 2], [3, 4]]
  */
 
-export function chunk<T>(input: Array<T>, count: number): Array<Array<T>> {
+export function chunk<A>(input: Array<A>, count: number): Array<Array<A>> {
   return []
 }
 
@@ -81,6 +81,15 @@ export function chunk<T>(input: Array<T>, count: number): Array<Array<T>> {
  * https://www.typescriptlang.org/docs/handbook/basic-types.html#tuple
  */
 
-export function zip<T, K>(a: Array<T>, b: Array<K>): Array<[T, K]> {
+export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
   return []
 }
+
+/**
+ * Merge-by-repeating, merge two arrays into one by repeating the elements, ie.
+ * [1,2,3], ["a", "b", "c"] => [1, "a", 2, "b", 3, "c"]
+ */
+
+ export function mergeByRepeating<A, B> (a: Array<A>, b: Array<B>): Array<A|B> {
+   return []
+ }
