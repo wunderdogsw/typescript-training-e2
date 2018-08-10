@@ -1,8 +1,8 @@
 import * as second from '~/session_two'
-import { Map } from '~/session_two'
+import { Dictionary } from '~/session_two'
 
 const a = 'a', b = 'b', c = 'c', d = 'd'
-type TestMap = Map<string>
+type TestMap = Dictionary<string>
 
 type TestCase<FP, SP, RET> = {
   input: [FP, SP],
@@ -39,7 +39,7 @@ function prettyParams(input: (object | string | number | Array<{}>)[], expected:
 }
 
 describe('Session two', () => {
-  describe('The Map type', () => {
+  describe('The Dictionary type', () => {
     describe('get(a, key)', () => {
       const { get } = second
       type GetCase = TestCase<TestMap, string, string | undefined>

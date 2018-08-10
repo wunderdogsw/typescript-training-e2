@@ -1,48 +1,48 @@
 /**
- *  An utility type for a readonly Map
+ *  An utility type for a readonly Dictionary
  */
 
-export type Map<T> = {
+export type Dictionary<T> = {
   readonly [key: string]: T | undefined
 }
 
 /**
- * Extract a value pointed by the key from the Map object
+ * Extract a value pointed by the key from the Dictionary object
  */
 
-export function get<T>(a: Map<T>, key: string): T | undefined {
+export function get<T>(a: Dictionary<T>, key: string): T | undefined {
   return undefined
 }
 
 /**
- * Return a new Map with the `key` removed
+ * Return a new Dictionary with the `key` removed
  */
 
-export function remove<T>(a: Map<T>, key: string): Map<T> {
+export function remove<T>(a: Dictionary<T>, key: string): Dictionary<T> {
   return {}
 }
 
 /**
- * Return a new Map with all the [key, value] pairs from a and b
+ * Return a new Dictionary with all the [key, value] pairs from a and b
  */
 
-export function union<T>(a: Map<T>, b: Map<T>): Map<T> {
+export function union<T>(a: Dictionary<T>, b: Dictionary<T>): Dictionary<T> {
   return {}
 }
 
 /**
- * Return a new Map with all the [key, value] pairs that exist both in a and b
+ * Return a new Dictionary with all the [key, value] pairs that exist both in a and b
  */
 
-export function intersection<T>(a: Map<T>, b: Map<T>): Map<T> {
+export function intersection<T>(a: Dictionary<T>, b: Dictionary<T>): Dictionary<T> {
   return {}
 }
 
 /**
- * Return a new Map with all the [key, value] pairs that do not exist in both a and b
+ * Return a new Dictionary with all the [key, value] pairs that do not exist in both a and b
  */
 
-export function difference<T>(a: Map<T>, b: Map<T>): Map<T> {
+export function difference<T>(a: Dictionary<T>, b: Dictionary<T>): Dictionary<T> {
   return {}
 }
 
