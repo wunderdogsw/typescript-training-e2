@@ -41,3 +41,5 @@ type Common<A, B> = Pick<B, Extract<keyof A, keyof B>>;
 export function commonProperties<A extends Indexed, B extends Indexed>(a: A, b: B): Common<A, B> {
   return ({} as Common<A, B>)
 }
+
+export function zipArrays<T, K>(a: Array<T>, b: Array<K>): Array<[T, K]>
