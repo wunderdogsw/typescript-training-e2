@@ -165,57 +165,6 @@ describe('Session two', () => {
     })
   })
 
-  describe('commonProperties', () => {
-    const { commonProperties } = second
-    type A = {
-      a: string,
-    }
-
-    type B = {
-      a: string,
-      b: number
-    }
-
-    type C = {
-      a: string,
-      b: number,
-      c: () => void
-    }
-
-    type D = {
-      b: number,
-      c: () => void,
-      d: Array<number>
-    }
-
-    it('should return the intersection of types A and B', () => {
-      const left: A = { a }
-      const right: B = { a, b: 0}
-      expect(commonProperties(left, right)).toEqual({ a })
-    })
-
-    it('should carry the properties of the right-hand side type', () => {
-      const left: A = { a }
-      const right = { a: 0 }
-      expect(commonProperties(left, right)).toEqual(right)
-    })
-
-    it('should drop properties that don\'t exist on the rhs object', () => {
-      const left: C = {
-        a,
-        b: 0,
-        c: () => null
-      }
-
-      const right: D = {
-        b: 0,
-        c: () => null,
-        d: []
-      }
-      expect(commonProperties(left, right)).toEqual({b: 0, c: right.c})
-    })
-  })
-
   describe('chunk(input, n)', () => {
     const { chunk } = second
     type ChunkCase = TestCase<Array<string>, number, Array<Array<string>>>
@@ -274,8 +223,8 @@ describe('Session two', () => {
     })
   })
 
-  describe('mergeByRepeating(a, b)', () => {
-    const { mergeByRepeating } = second
+  describe('intermingle(a, b)', () => {
+    const { intermingle } = second
     type RepeatCase = TestCase<Array<string>, Array<number>, Array<string | number>>
     const testCases: RepeatCase[] = [
       {
@@ -294,8 +243,38 @@ describe('Session two', () => {
     testCases.forEach(({ input, expected }: RepeatCase) => {
       const pretty = prettyParams(input, expected)
       it(`should return ${pretty.output} for the input ${pretty.input} `, () => {
-        expect(mergeByRepeating.apply(null, input)).toEqual(expected)
+        expect(intermingle.apply(null, input)).toEqual(expected)
       })
+    })
+  })
+
+  describe('withTimestamp(value)', () => {
+    const { withTimestamp } = second
+    it('should return an identical object with "timestamp" field', () => {
+      const value = { name: 'John Doe' }
+      const timestamp = Date.now()
+      expect(withTimestamp(value, timestamp)).toEqual({
+        name: 'John Doe',
+        timestamp,
+      })
+    })
+
+    it('should not modify the original value', () => {
+      const value = { name: 'John Doe' }
+      expect(value).toEqual({ name: 'John Doe' })
+    })
+  })
+
+  describe('keyLengths(value)', () => {
+    const { keyLengths } = second
+
+    it('should return an object with the field lengths of the original object', () => {
+      const value = {
+        foobar: '',
+        bar: 5,
+        buzz: new Date(),
+      }
+      expect(keyLengths(value)).toEqual({ foobar: 6, bar: 3, buzz: 4 })
     })
   })
 })
