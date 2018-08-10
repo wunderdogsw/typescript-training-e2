@@ -76,6 +76,9 @@ export function chunk<T>(input: Array<T>, count: number): Array<Array<T>> {
 /**
  * Zip the arrays a and b together, ie,
  * [1,2,3], ["a", "b", "c"] => [[1, "a"], [2, "b"], [3, "c"]]
+ *
+ * Note the use of the tuple type:
+ * https://www.typescriptlang.org/docs/handbook/basic-types.html#tuple
  */
 
 export function zip<T, K>(a: Array<T>, b: Array<K>): Array<[T, K]> {
