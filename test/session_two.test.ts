@@ -132,7 +132,7 @@ describe('Session two', () => {
     })
 
     describe('intersection(a, b)', () => {
-      const { union } = second
+      const { intersection } = second
       type RemoveCase = TestCase<TestMap, TestMap, TestMap>
       const testCases: RemoveCase[] = [        {
           input: [{ a, b }, { c }],
@@ -158,7 +158,7 @@ describe('Session two', () => {
       testCases.forEach(({ input, expected }: RemoveCase) => {
         const pretty = prettyParams(input, expected)
         it(`should return ${pretty.output} for the input ${pretty.input}, `, () => {
-          expect(union.apply(null, input)).toEqual(expected)
+          expect(intersection.apply(null, input)).toEqual(expected)
         })
       })
     })
