@@ -99,8 +99,40 @@ describe('Session two', () => {
       })
     })
 
+    describe.only('union(a, b)', () => {
+      const { union } = second
+      type UnionCase = TestCase<TestMap, TestMap, TestMap>
+      const testCases: UnionCase[] = [        {
+          input: [{ a, b }, { c }],
+          expected: {a, b, c}
+        },
+        {
+          input: [{ a, b }, { a }],
+          expected: { a, b }
+        },
+        {
+          input: [{ a, b, c }, { a, b, c }],
+          expected: { a, b, c }
+        },
+        {
+          input: [{}, { a, b }],
+          expected: {a, b}
+        },
+        {
+          input: [{}, {}],
+          expected: {}
+        }
+      ]
+      testCases.forEach(({ input, expected }: UnionCase) => {
+        const pretty = prettyParams(input, expected)
+        it(`should return ${pretty.output} for the input ${pretty.input}, `, () => {
+          expect(union.apply(null, input)).toEqual(expected)
+        })
+      })
+    })
+
     describe('intersection(a, b)', () => {
-      const { intersection } = second
+      const { union } = second
       type RemoveCase = TestCase<TestMap, TestMap, TestMap>
       const testCases: RemoveCase[] = [        {
           input: [{ a, b }, { c }],
@@ -126,7 +158,7 @@ describe('Session two', () => {
       testCases.forEach(({ input, expected }: RemoveCase) => {
         const pretty = prettyParams(input, expected)
         it(`should return ${pretty.output} for the input ${pretty.input}, `, () => {
-          expect(intersection.apply(null, input)).toEqual(expected)
+          expect(union.apply(null, input)).toEqual(expected)
         })
       })
     })
