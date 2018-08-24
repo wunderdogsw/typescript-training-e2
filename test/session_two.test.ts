@@ -99,7 +99,7 @@ describe('Session two', () => {
       })
     })
 
-    describe.only('union(a, b)', () => {
+    describe('union(a, b)', () => {
       const { union } = second
       type UnionCase = TestCase<TestMap, TestMap, TestMap>
       const testCases: UnionCase[] = [        {
