@@ -1,5 +1,9 @@
 # TypeScript session two exercises
 
+## Material for the session
+
+[https://training.wunderdog.dev/typescript/advanced/](https://training.wunderdog.dev/typescript/advanced/)
+
 ## Working with the exercises
 
 The exercises are supplied as function stubs in `src/session_two.ts` which you are expected to fill in.
