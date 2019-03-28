@@ -337,4 +337,24 @@ describe('Session two', () => {
             expect(keyLengths(value)).toEqual({ foobar: 6, bar: 3, buzz: 4 })
         })
     })
+
+    describe('volume(shape)', () => {
+        it('should calculate cube volume', () => {
+            expect(second.volume({ type: 'cube', size: 2 })).toBe(8)
+        })
+
+        it('should calculate sphere volume', () => {
+            const result = second
+                .volume({ type: 'sphere', radius: 2 })
+                .toFixed(3)
+            expect(result).toBe('33.510')
+        })
+
+        it('should calculate cylinder volume', () => {
+            const result = second
+                .volume({ type: 'cylinder', radius: 2, height: 4 })
+                .toFixed(3)
+            expect(result).toBe('50.265')
+        })
+    })
 })

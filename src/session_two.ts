@@ -86,8 +86,6 @@ export function intermingle<A, B>(a: Array<A>, b: Array<B>): Array<A | B> {
 
 /**
  * Return a new object with same fields as the parameter, but with a new `timestamp` field.
- *
- * NOTE/HINT: object spread doesn't work with generic types yet, try Object.assign
  */
 
 interface Timestamped {
@@ -112,4 +110,30 @@ type KeyLengths<T> = { [Key in keyof T]: number }
 
 export function keyLengths<T>(value: T): KeyLengths<T> {
     return {} as KeyLengths<T>
+}
+
+/**
+ * Calculate the volume of Cube, Sphere and Cylinder using a single function.
+ */
+
+interface Cube {
+    type: 'cube'
+    size: number
+}
+
+interface Sphere {
+    type: 'sphere'
+    radius: number
+}
+
+interface Cylinder {
+    type: 'cylinder'
+    radius: number
+    height: number
+}
+
+type Shape = Cube | Sphere | Cylinder
+
+export function volume(shape: Shape): number {
+    return 0
 }
