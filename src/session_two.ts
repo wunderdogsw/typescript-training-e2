@@ -4,7 +4,7 @@
  */
 
 export interface Dictionary<T> {
-  readonly [key: string]: T | undefined;
+    readonly [key: string]: T | undefined
 }
 
 /**
@@ -12,7 +12,7 @@ export interface Dictionary<T> {
  */
 
 export function get<T>(a: Dictionary<T>, key: string): T | undefined {
-  return undefined;
+    return undefined
 }
 
 /**
@@ -20,7 +20,7 @@ export function get<T>(a: Dictionary<T>, key: string): T | undefined {
  */
 
 export function remove<T>(a: Dictionary<T>, key: string): Dictionary<T> {
-  return {};
+    return {}
 }
 
 /**
@@ -28,7 +28,7 @@ export function remove<T>(a: Dictionary<T>, key: string): Dictionary<T> {
  */
 
 export function union<T>(a: Dictionary<T>, b: Dictionary<T>): Dictionary<T> {
-  return {};
+    return {}
 }
 
 /**
@@ -36,10 +36,10 @@ export function union<T>(a: Dictionary<T>, b: Dictionary<T>): Dictionary<T> {
  */
 
 export function intersection<T>(
-  a: Dictionary<T>,
-  b: Dictionary<T>
+    a: Dictionary<T>,
+    b: Dictionary<T>
 ): Dictionary<T> {
-  return {};
+    return {}
 }
 
 /**
@@ -47,10 +47,10 @@ export function intersection<T>(
  */
 
 export function difference<T>(
-  a: Dictionary<T>,
-  b: Dictionary<T>
+    a: Dictionary<T>,
+    b: Dictionary<T>
 ): Dictionary<T> {
-  return {};
+    return {}
 }
 
 /**
@@ -59,7 +59,7 @@ export function difference<T>(
  */
 
 export function chunk<A>(input: Array<A>, count: number): Array<Array<A>> {
-  return [];
+    return []
 }
 
 /**
@@ -71,7 +71,7 @@ export function chunk<A>(input: Array<A>, count: number): Array<Array<A>> {
  */
 
 export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
-  return [];
+    return []
 }
 
 /**
@@ -80,55 +80,36 @@ export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
  */
 
 export function intermingle<A, B>(a: Array<A>, b: Array<B>): Array<A | B> {
-  const arr: Array<A | B> = [];
-  return arr;
+    const arr: Array<A | B> = []
+    return arr
 }
 
 /**
  * Return a new object with same fields as the parameter, but with a new `timestamp` field.
- * 
+ *
  * NOTE/HINT: object spread doesn't work with generic types yet, try Object.assign
  */
 
 interface Timestamped {
-  timestamp: number
+    timestamp: number
 }
 
-export function withTimestamp<T extends object>(value: T, timestamp: number): T & Timestamped {
-  return value as T & Timestamped
+export function withTimestamp<T extends object>(
+    value: T,
+    timestamp: number
+): T & Timestamped {
+    return value as T & Timestamped
 }
 
 /**
- * 1. Return an object which has the same fields as the parameter, but
- *    the value of each field is the lenght of the fields name.
- *    e.g.
- *    { foobar: '', bar: 66 } => { foobar: 6, bar: 3 }
- * 
- * 2. Then, make KeyLengths<T> and keyLenghts() externally type safe, no `any`!
- *    Sometimes internal `any` use is unavoidable, but try to make it as
- *    type safe as possible.
+ * Return an object which has the same fields as the parameter, but
+ * the value of each field is the length of the fields name.
+ * e.g.
+ * { a: '', abc: 66 } => { a: 1, abc: 3 }
  */
 
-type KeyLengths<T> = any // :(
+type KeyLengths<T> = { [Key in keyof T]: number }
 
 export function keyLengths<T>(value: T): KeyLengths<T> {
-  return {} as KeyLengths<T>
-}
-
-function verifyKeyLengthsTypes() {
-  const lengths = keyLengths({
-    username: 'root',
-    password: 'iddqd',
-  })
-  // These should have OK types
-  const usernameLen: number = lengths.username
-  const passwordLen: number = lengths.password
-
-  // These should not pass type check
-  const flurbLen: number = lengths.flurb
-  const usernameStr: string = lengths.username
-  const passwordStr: string = lengths.password
-
-  // Just to get rid of "unused variable" warning
-  console.log(usernameLen, passwordLen, flurbLen, usernameStr, passwordStr)
+    return {} as KeyLengths<T>
 }
