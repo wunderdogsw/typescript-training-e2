@@ -1,9 +1,4 @@
 {
-  "git.ignoreLimitWarning": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "workbench.colorCustomizations": {
-    "activityBar.background": "#3E2910",
-    "titleBar.activeBackground": "#573917",
-    "titleBar.activeForeground": "#FDFBF8"
-  }
+  "eslint.validate": ["typescript", "typescriptreact"]
 }

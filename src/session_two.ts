@@ -1,10 +1,19 @@
 /**
+ * Missing implementation.
+ * Note the use of `never` type to signal that this function never returns.
+ * Try changing it to `undefined` and see what TS says.
+ */
+function TODO(): never {
+  throw Error('Not implemented')
+}
+
+/**
  *  An utility type for a readonly HashMap style Dictionary
  *  (ES6 reserved the name Map)
  */
 
 export interface Dictionary<T> {
-    readonly [key: string]: T | undefined
+  readonly [key: string]: T | undefined
 }
 
 /**
@@ -12,7 +21,7 @@ export interface Dictionary<T> {
  */
 
 export function get<T>(a: Dictionary<T>, key: string): T | undefined {
-    return undefined
+  TODO()
 }
 
 /**
@@ -20,7 +29,7 @@ export function get<T>(a: Dictionary<T>, key: string): T | undefined {
  */
 
 export function remove<T>(a: Dictionary<T>, key: string): Dictionary<T> {
-    return {}
+  TODO()
 }
 
 /**
@@ -28,7 +37,7 @@ export function remove<T>(a: Dictionary<T>, key: string): Dictionary<T> {
  */
 
 export function union<T>(a: Dictionary<T>, b: Dictionary<T>): Dictionary<T> {
-    return {}
+  TODO()
 }
 
 /**
@@ -36,21 +45,21 @@ export function union<T>(a: Dictionary<T>, b: Dictionary<T>): Dictionary<T> {
  */
 
 export function intersection<T>(
-    a: Dictionary<T>,
-    b: Dictionary<T>
+  a: Dictionary<T>,
+  b: Dictionary<T>,
 ): Dictionary<T> {
-    return {}
+  TODO()
 }
 
 /**
- * Return a new Dictionary with all the [key, value] pairs that do not exist in both a and b
+ * nTODO()ew Dictionary with all the [key, value] pairs that do not exist in both a and b
  */
 
 export function difference<T>(
-    a: Dictionary<T>,
-    b: Dictionary<T>
+  a: Dictionary<T>,
+  b: Dictionary<T>,
 ): Dictionary<T> {
-    return {}
+  TODO()
 }
 
 /**
@@ -59,7 +68,7 @@ export function difference<T>(
  */
 
 export function chunk<A>(input: Array<A>, count: number): Array<Array<A>> {
-    return []
+  TODO()
 }
 
 /**
@@ -71,7 +80,7 @@ export function chunk<A>(input: Array<A>, count: number): Array<Array<A>> {
  */
 
 export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
-    return []
+  TODO()
 }
 
 /**
@@ -80,27 +89,27 @@ export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
  */
 
 export function intermingle<A, B>(a: Array<A>, b: Array<B>): Array<A | B> {
-    const arr: Array<A | B> = []
-    return arr
+  const arr: Array<A | B> = []
+  TODO()
 }
 
 /**
- * Return a new object with same fields as the parameter, but with a new `timestamp` field.
+ * Returns a new object with same fields as the parameter, but with a new `timestamp` field.
  */
 
 interface Timestamped {
-    timestamp: number
+  timestamp: number
 }
 
 export function withTimestamp<T extends object>(
-    value: T,
-    timestamp: number
+  value: T,
+  timestamp: number,
 ): T & Timestamped {
-    return value as T & Timestamped
+  TODO()
 }
 
 /**
- * Return an object which has the same fields as the parameter, but
+ * Returns an object which has the same fields as the parameter, but
  * the value of each field is the length of the fields name.
  * e.g.
  * { a: '', abc: 66 } => { a: 1, abc: 3 }
@@ -109,7 +118,7 @@ export function withTimestamp<T extends object>(
 type KeyLengths<T> = { [Key in keyof T]: number }
 
 export function keyLengths<T>(value: T): KeyLengths<T> {
-    return {} as KeyLengths<T>
+  TODO()
 }
 
 /**
@@ -117,23 +126,23 @@ export function keyLengths<T>(value: T): KeyLengths<T> {
  */
 
 interface Cube {
-    type: 'cube'
-    size: number
+  type: 'cube'
+  size: number
 }
 
 interface Sphere {
-    type: 'sphere'
-    radius: number
+  type: 'sphere'
+  radius: number
 }
 
 interface Cylinder {
-    type: 'cylinder'
-    radius: number
-    height: number
+  type: 'cylinder'
+  radius: number
+  height: number
 }
 
 type Shape = Cube | Sphere | Cylinder
 
 export function volume(shape: Shape): number {
-    return 0
+  TODO()
 }

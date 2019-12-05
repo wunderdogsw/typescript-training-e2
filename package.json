@@ -1,43 +1,31 @@
 {
-    "name": "exercise-two",
-    "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
-    "scripts": {
-        "build": "tsc",
-        "test": "jest test/*",
-        "lint": "tslint --project tsconfig.json src/*",
-        "watch": "jest --watch test/*"
-    },
-    "author": "",
-    "license": "ISC",
-    "devDependencies": {
-        "@types/jest": "^24.0.11",
-        "jest": "^24.5.0",
-        "ts-jest": "^24.0.0",
-        "tslint": "^5.11.0",
-        "tslint-config-airbnb": "^5.11.1",
-        "tslint-config-prettier": "^1.18.0",
-        "tslint-language-service": "^0.9.9",
-        "typescript": "^3.3.4000",
-        "typestrict": "^1.0.2"
-    },
-    "jest": {
-        "testURL": "file:/",
-        "transform": {
-            "^.+\\.tsx?$": "ts-jest"
-        },
-        "moduleNameMapper": {
-            "~/(.*)": "<rootDir>/src/$1"
-        },
-        "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-        "moduleFileExtensions": [
-            "ts",
-            "tsx",
-            "js",
-            "jsx",
-            "json",
-            "node"
-        ]
+  "name": "exercise-two",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest test/*",
+    "lint": "eslint ./src/**/*.ts",
+    "watch": "jest --watch test/*"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^24.0.23",
+    "@types/node": "^12.12.14",
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.3"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "moduleNameMapper": {
+      "~/(.*)": "<rootDir>/src/$1"
     }
+  }
 }

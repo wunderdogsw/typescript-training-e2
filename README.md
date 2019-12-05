@@ -2,7 +2,7 @@
 
 ## Material for the session
 
-[https://training.wunderdog.dev/typescript/advanced/](https://training.wunderdog.dev/typescript/advanced/)
+[wunderdog.dev/presentations/advanced](https://wunderdog.dev/presentations/advanced)
 
 ## Working with the exercises
 
@@ -17,9 +17,19 @@ npm install
 npm run watch
 ```
 
+### Lint your code
+
+```bash
+npm run lint
+```
+
 ### Working with the exercises
 
 Open the `src/session_two.ts` in an editor with TypeScript support (a recent version of VS Code is highly recommended), fill in the behavior to the function stubs and run the test set.
+
+Note that Jest (the test runner) will not report type errors!
+
+Focus on specific excercises by running the `watch`-command, press p, and write a filter, like `get`.
 
 As long as there are failing tests, just keep repeating the process. Enjoy!
 
