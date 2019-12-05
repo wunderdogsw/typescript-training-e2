@@ -312,7 +312,8 @@ describe('Session two', () => {
     it('should not modify the original value', () => {
       const value = { name: 'John Doe' }
       const timestamp = Date.now()
-      expect(withTimestamp(value, timestamp)).toEqual({ name: 'John Doe' })
+      withTimestamp(value, timestamp)
+      expect(value).toEqual({ name: 'John Doe' })
     })
   })
 

@@ -52,7 +52,7 @@ export function intersection<T>(
 }
 
 /**
- * nTODO()ew Dictionary with all the [key, value] pairs that do not exist in both a and b
+ * Return a new Dictionary with all the [key, value] pairs that do not exist in both a and b
  */
 
 export function difference<T>(
